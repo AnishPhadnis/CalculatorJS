@@ -1,0 +1,29 @@
+#calculator{
+    height: 500px;
+    width: 400px;
+    border: 10px solid blue;
+    margin-left: 25%;
+}
+
+#display{
+    width: 380px;
+    height: 200px;
+    border: 10px solid green;
+}
+
+#userButtons{
+    display: flex;
+}
+
+#numbers{
+    width: 310px;
+    height: 260px;
+    border: 10px solid black;
+}
+
+#rightSection{
+    width: 60px;
+    height: 260px;
+    border: 10px solid black;
+}
+
