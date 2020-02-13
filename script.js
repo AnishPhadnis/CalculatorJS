@@ -2,6 +2,10 @@ let userInput = '';
 
 const userNumber = document.querySelectorAll('.userNumber');
 const display = document.querySelector('#display');
+const clear = document.querySelector('#clear');
+clear.addEventListener('click', function (){
+    displayClear();
+});
 
 for(let i = 0; i < 9; i++){
     userNumber[i].addEventListener('click', function () {
@@ -16,8 +20,20 @@ function showDisplay(){
     let calcDisplay = document.createElement('p');
     calcDisplay.classList.add('calcDisplay');
     calcDisplay.appendChild(document.createTextNode(userInput.textContent));
+
+    calcDisplay.style.margin = '10% 10%';
+    calcDisplay.style.display = 'inline';
+
     display.appendChild(calcDisplay);
 
+}
+
+function lear(){
+    let num = document.querySelectorAll('p');
+
+    for(let i = 0; i < num.length; i++){
+        num[i].remove();
+    }
 }
 
 function add(a, b){

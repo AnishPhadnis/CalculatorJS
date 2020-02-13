@@ -9,6 +9,7 @@
     width: 380px;
     height: 150px;
     border: 10px solid green;
+    text-align: left;
 }
 
 #userButtons{
@@ -32,6 +33,13 @@
     width: 96.7px;
     height: 79.5px;
     border: 2px solid orange;
+}
+
+#clear{
+    width: 50px;
+    height: 79.5px;
+    border: 2px solid orange;
+
 }
 
 #rightSection{
