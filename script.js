@@ -28,7 +28,7 @@ function showDisplay(){
 
 }
 
-function lear(){
+function displayClear(){
     let num = document.querySelectorAll('p');
 
     for(let i = 0; i < num.length; i++){
