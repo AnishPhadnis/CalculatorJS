@@ -10,18 +10,26 @@ clear.addEventListener('click', function (){
 for(let i = 0; i < 9; i++){
     userNumber[i].addEventListener('click', function () {
         userInput = userNumber[i];
-        console.log(userInput.textContent);
         showDisplay();
 });
 }
-    
+ 
+
+function getDisplay(){
+    let display = document.querySelectorAll('.calcDisplay');
+
+    display.forEach(function(index) {
+        console.log(index.textContent);
+    });
+
+}
 
 function showDisplay(){
     let calcDisplay = document.createElement('p');
     calcDisplay.classList.add('calcDisplay');
     calcDisplay.appendChild(document.createTextNode(userInput.textContent));
 
-    calcDisplay.style.margin = '10% 10%';
+    calcDisplay.style.margin = '5% 5%';
     calcDisplay.style.display = 'inline';
 
     display.appendChild(calcDisplay);
@@ -52,7 +60,7 @@ function divide(a, b){
     return a / b
 }
 
-function operate(operation, a, b){
+function executeOperation(operation, a, b){
     if(operation == 'add'){
         return add(a, b)
     }
