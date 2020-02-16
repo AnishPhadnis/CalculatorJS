@@ -7,7 +7,7 @@ clear.addEventListener('click', function (){
     displayClear();
 });
 
-for(let i = 0; i < 9; i++){
+for(let i = 0; i <= 9; i++){
     userNumber[i].addEventListener('click', function () {
         userInput = userNumber[i];
         showDisplay();
@@ -24,16 +24,26 @@ function getDisplay(){
 
 }
 
-function showDisplay(){
+function showDisplay(string = userInput.textContent){
     let calcDisplay = document.createElement('p');
     calcDisplay.classList.add('calcDisplay');
-    calcDisplay.appendChild(document.createTextNode(userInput.textContent));
+    calcDisplay.appendChild(document.createTextNode(string));
 
     calcDisplay.style.margin = '5% 5%';
     calcDisplay.style.display = 'inline';
 
     display.appendChild(calcDisplay);
 
+}
+
+function evaluate(string){
+    if(string.eval() === Infinity){
+        showDisplay('Cannot divide by 0');
+    }
+
+    else{
+        showDisplay(string.eval());
+    }
 }
 
 function displayClear(){

@@ -22,16 +22,22 @@
     border: 10px solid black;
 }
 
-#bottomRow, #middleRow, #topRow{
+#bottomRow, #middleRow1, #middleRow2, #topRow{
     border: 10px solid red;
     width: 290px;
-    height: 83.5px;
+    height: 59.5px;
     display: flex;
+}
+
+#decimal, #equals{
+    width: 96.7px;
+    height: 62.5px;
+    border: 2px solid orange;
 }
 
 .userNumber{
     width: 96.7px;
-    height: 79.5px;
+    height: 62.5px;
     border: 2px solid orange;
 }
 
