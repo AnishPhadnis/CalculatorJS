@@ -2,17 +2,36 @@ let userInput = '';
 
 const userNumber = document.querySelectorAll('.userNumber');
 const display = document.querySelector('#display');
+
 const clear = document.querySelector('#clear');
-clear.addEventListener('click', function (){
-    displayClear();
-});
+const equals = document.querySelector('#equals');
+
+const decimal = document.querySelector('#decimal');
+const add = document.querySelector('#add');
+const subtract = document.querySelector('#subtract');
+const multiply = document.querySelector('#multiply');
+const divide = document.querySelector('#divide');
+const specialFunction = document.querySelectorAll('.specialFunc');
+
+const specialFunctionDisplay = ['.', '+', '-', '/', '*'];
 
 for(let i = 0; i <= 9; i++){
     userNumber[i].addEventListener('click', function () {
         userInput = userNumber[i];
-        showDisplay();
+        showDisplay(specialFunctionDisplay[i]);
 });
 }
+
+[...specialFunction].forEach(specialFunc => {
+    specialFunc.addEventListener('click', function(){
+        showDisplay(specialFunctionDisplay[i]);
+    });
+});
+
+// Button Event Listeners
+clear.addEventListener('click', function (){
+    displayClear();
+});
  
 
 function getDisplay(){
@@ -54,37 +73,37 @@ function displayClear(){
     }
 }
 
-function add(a, b){
+function addNum(a, b){
     return a + b
 }
 
-function subtract(a, b){
+function subtractNum(a, b){
     return a - b
 }
 
-function multiply(a, b){
+function multiplyNum(a, b){
     return a * b
 }
 
-function divide(a, b){
+function divideNum(a, b){
     return a / b
 }
 
 function executeOperation(operation, a, b){
     if(operation == 'add'){
-        return add(a, b)
+        return addNum(a, b)
     }
 
     else if(operation == 'subtract'){
-        return subtract(a, b)
+        return subtractNum(a, b)
     }
     
     else if(operation == "multiply"){
-        return multiply(a, b)
+        return multiplyNum(a, b)
     }
 
     else if(operation == 'divide'){
-        return divide(a, b)
+        return divideNum(a, b)
     }
         
 }
