@@ -13,18 +13,18 @@ const multiply = document.querySelector('#multiply');
 const divide = document.querySelector('#divide');
 const specialFunction = document.querySelectorAll('.specialFunc');
 
-const specialFunctionDisplay = ['.', '+', '-', '/', '*'];
+//const specialFunctionDisplay = ['.', '+', '-', '/', '*'];
 
 for(let i = 0; i <= 9; i++){
     userNumber[i].addEventListener('click', function () {
-        userInput = userNumber[i];
-        showDisplay(specialFunctionDisplay[i]);
+        userInput = userNumber[i].textContent;
+        showDisplay(userInput);
 });
 }
 
 [...specialFunction].forEach(specialFunc => {
     specialFunc.addEventListener('click', function(){
-        showDisplay(specialFunctionDisplay[i]);
+        showDisplay(specialFunc.textContent);
     });
 });
 
