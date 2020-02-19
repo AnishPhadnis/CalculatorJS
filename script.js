@@ -32,14 +32,30 @@ for(let i = 0; i <= 9; i++){
 clear.addEventListener('click', function (){
     displayClear();
 });
+
+equals.addEventListener('click', function () {
+    evaluateDisplay();
+    
+})
  
+
+function evaluateDisplay(){
+    let display = getDisplay();
+    let result = eval(display);
+
+    displayClear();
+
+    showDisplay(result.toString());
+}
 
 function getDisplay(){
     let display = document.querySelectorAll('.calcDisplay');
-
+    let string = '';
     display.forEach(function(index) {
-        console.log(index.textContent);
+        string += index.textContent;
     });
+
+    return string
 
 }
 
