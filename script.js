@@ -1,20 +1,19 @@
-let userInput = '';
-
+const operationDispay = document.querySelector('#operationDisplay');
 const userNumber = document.querySelectorAll('.userNumber');
-const display = document.querySelector('#display');
-
-const clear = document.querySelector('#clear');
-const equals = document.querySelector('#equals');
 
 const decimal = document.querySelector('#decimal');
-const add = document.querySelector('#add');
-const subtract = document.querySelector('#subtract');
-const multiply = document.querySelector('#multiply');
-const divide = document.querySelector('#divide');
 const specialFunction = document.querySelectorAll('.specialFunc');
+const specialFunctionChar = [' + ', ' - ', ' * ', ' / '];
+const clear = document.querySelector('#clear');
+const equals = document.querySelector('#equals');
+const backspace = document.querySelector('#backspace');
 
-//const specialFunctionDisplay = ['.', '+', '-', '/', '*'];
+let userInput = '';
+let isDecimalPressed = false;
 
+// Button Event Listeners
+
+// Numbers
 for(let i = 0; i <= 9; i++){
     userNumber[i].addEventListener('click', function () {
         userInput = userNumber[i].textContent;
@@ -22,31 +21,36 @@ for(let i = 0; i <= 9; i++){
 });
 }
 
+//Operations
 [...specialFunction].forEach(specialFunc => {
     specialFunc.addEventListener('click', function(){
         showDisplay(specialFunc.textContent);
+        isDecimalPressed = false;
     });
 });
 
-// Button Event Listeners
-clear.addEventListener('click', function (){
-    displayClear();
+decimal.addEventListener('click', displayDecimal);
+
+clear.addEventListener('click', displayClear);
+equals.addEventListener('click', evaluateDisplay);
+backspace.addEventListener('click', removeLast);
+
+let hello; 
+
+window.addEventListener('keyup', (e) => {
+    
+    hello = +e.key;
+    console.log(hello);
+
+    if(e.keyCode === 8){
+        removeLast();
+    }
+
+    else if(!(isNaN(e.key))){
+        showDisplay(e.key.toString())
+    }
 });
 
-equals.addEventListener('click', function () {
-    evaluateDisplay();
-    
-})
- 
-
-function evaluateDisplay(){
-    let display = getDisplay();
-    let result = eval(display);
-
-    displayClear();
-
-    showDisplay(result.toString());
-}
 
 function getDisplay(){
     let display = document.querySelectorAll('.calcDisplay');
@@ -56,7 +60,7 @@ function getDisplay(){
     });
 
     return string
-
+    
 }
 
 function showDisplay(string = userInput.textContent){
@@ -64,21 +68,12 @@ function showDisplay(string = userInput.textContent){
     calcDisplay.classList.add('calcDisplay');
     calcDisplay.appendChild(document.createTextNode(string));
 
-    calcDisplay.style.margin = '5% 5%';
-    calcDisplay.style.display = 'inline';
+    calcDisplay.style.margin = '2% 2%';
+    calcDisplay.style.display = 'inline-block';
+    calcDisplay.style.fontSize = '25px';
 
-    display.appendChild(calcDisplay);
+    operationDisplay.appendChild(calcDisplay);
 
-}
-
-function evaluate(string){
-    if(string.eval() === Infinity){
-        showDisplay('Cannot divide by 0');
-    }
-
-    else{
-        showDisplay(string.eval());
-    }
 }
 
 function displayClear(){
@@ -89,37 +84,32 @@ function displayClear(){
     }
 }
 
-function addNum(a, b){
-    return a + b
-}
+function evaluateDisplay(){
+    let display = getDisplay().replace(/\s/g, '');
+    let result = eval(display);
+    isDecimalPressed = false;
 
-function subtractNum(a, b){
-    return a - b
-}
+    displayClear();
 
-function multiplyNum(a, b){
-    return a * b
-}
-
-function divideNum(a, b){
-    return a / b
-}
-
-function executeOperation(operation, a, b){
-    if(operation == 'add'){
-        return addNum(a, b)
+    if(result === Infinity){
+        showDisplay('Error - Cannot divide by 0.')
     }
-
-    else if(operation == 'subtract'){
-        return subtractNum(a, b)
+    else{
+        showDisplay(result.toString());
     }
     
-    else if(operation == "multiply"){
-        return multiplyNum(a, b)
-    }
+}
 
-    else if(operation == 'divide'){
-        return divideNum(a, b)
+function removeLast() {
+    let allChar = document.querySelectorAll('.calcDisplay');
+    let lastChar = allChar[allChar.length - 1];
+
+    lastChar.remove();
+}
+
+function displayDecimal(){
+    if(!isDecimalPressed){
+        showDisplay('.');
+        isDecimalPressed = true;
     }
-        
 }

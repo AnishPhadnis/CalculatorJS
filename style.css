@@ -12,6 +12,11 @@
     text-align: left;
 }
 
+#operationDisplay{
+    margin-top: 10%;
+    margin-left: 15%;
+}
+
 #userButtons{
     display: flex;
 }
@@ -49,7 +54,7 @@
 
 .rightSection button{
     width: 50px;
-    height: 62px;
+    height: 52px;
     border: 2px solid orange;
 }
 
