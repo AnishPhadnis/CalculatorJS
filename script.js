@@ -3,7 +3,7 @@ const userNumber = document.querySelectorAll('.userNumber');
 
 const decimal = document.querySelector('#decimal');
 const specialFunction = document.querySelectorAll('.specialFunc');
-const specialFunctionChar = [' + ', ' - ', ' * ', ' / '];
+const specialFunctionChar = ['+', '-', '*', '/'];
 const clear = document.querySelector('#clear');
 const equals = document.querySelector('#equals');
 const backspace = document.querySelector('#backspace');
@@ -35,19 +35,18 @@ clear.addEventListener('click', displayClear);
 equals.addEventListener('click', evaluateDisplay);
 backspace.addEventListener('click', removeLast);
 
-let hello; 
-
 window.addEventListener('keyup', (e) => {
-    
-    hello = +e.key;
-    console.log(hello);
-
     if(e.keyCode === 8){
         removeLast();
     }
 
     else if(!(isNaN(e.key))){
         showDisplay(e.key.toString())
+    }
+
+    else if(specialFunctionChar.includes(e.key)){
+        console.log('hi');
+        showDisplay(e.key.toString());
     }
 });
 
