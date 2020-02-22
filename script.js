@@ -35,7 +35,7 @@ clear.addEventListener('click', displayClear);
 equals.addEventListener('click', evaluateDisplay);
 backspace.addEventListener('click', removeLast);
 
-window.addEventListener('keyup', (e) => {
+window.addEventListener('keydown', (e) => {
     if(e.keyCode === 8){
         removeLast();
     }
@@ -45,8 +45,15 @@ window.addEventListener('keyup', (e) => {
     }
 
     else if(specialFunctionChar.includes(e.key)){
-        console.log('hi');
         showDisplay(e.key.toString());
+    }
+
+    else if(e.keyCode === 13 || e.keyCode == 187){
+        evaluateDisplay();
+    }
+
+    else if(e.keyCode == 190){
+        showDisplay('.');
     }
 });
 
