@@ -1,14 +1,14 @@
 #calculator{
     height: 500px;
     width: 400px;
-    border: 10px solid blue;
+    border: 10px solid;
     margin-left: 25%;
 }
 
 #display{
     width: 380px;
     height: 150px;
-    border: 10px solid green;
+    border: 10px solid;
     text-align: left;
 }
 
@@ -24,11 +24,11 @@
 #numbers{
     width: 310px;
     height: 310px;
-    border: 10px solid black;
+    border: 10px solid;
 }
 
 #bottomRow, #middleRow1, #middleRow2, #topRow{
-    border: 10px solid red;
+    border: 10px solid;
     width: 290px;
     height: 59.5px;
     display: flex;
@@ -37,24 +37,37 @@
 #decimal, #equals{
     width: 96.7px;
     height: 62.5px;
-    border: 2px solid orange;
+    border: 2px solid;
+    background: rgba(254, 254, 244, 1);
+    color: rgba(124, 117, 109, 1);
+}
+
+#clear, #backspace{
+    background: rgba(254, 254, 244, 1);
+    color: rgba(124, 117, 109, 1);
 }
 
 .userNumber{
     width: 96.7px;
     height: 62.5px;
-    border: 2px solid orange;
+    border: 2px solid;
+    background: rgba(58, 63, 56, 1);
+    color: rgba(228, 229, 222, 1);
 }
 
 .rightSection{
     width: 60px;
     height: 310px;
-    border: 10px solid black;
+    border: 10px solid;
 }
 
 .rightSection button{
     width: 50px;
     height: 52px;
-    border: 2px solid orange;
+    border: 2px solid;
 }
 
+.specialFunc{
+    background: rgba(247, 132, 17, 1);
+    color: rgba(251, 243, 230, 1);
+}
