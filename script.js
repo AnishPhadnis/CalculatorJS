@@ -74,9 +74,9 @@ function showDisplay(string = userInput.textContent){
     calcDisplay.classList.add('calcDisplay');
     calcDisplay.appendChild(document.createTextNode(string));
 
-    calcDisplay.style.margin = '2% 2%';
     calcDisplay.style.display = 'inline-block';
     calcDisplay.style.fontSize = '25px';
+    formatSpaces(calcDisplay, string);
 
     operationDisplay.appendChild(calcDisplay);
 
@@ -118,4 +118,18 @@ function displayDecimal(){
         showDisplay('.');
         isDecimalPressed = true;
     }
+}
+
+function formatSpaces(className, string){
+    let allChild = document.querySelectorAll('.calcDisplay');
+    let lastDisplay = allChild[allChild.length - 2];
+
+    if(!(isNaN(string)) || string === '.'){
+        className.style.margin = '0% 0%';
+    }
+
+    else{
+        className.style.margin = '2% 2%';
+    }
+
 }
