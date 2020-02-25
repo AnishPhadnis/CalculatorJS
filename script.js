@@ -1,5 +1,6 @@
-const operationDispay = document.querySelector('#operationDisplay');
+const operationDisplay = document.querySelector('#operationDisplay');
 const userNumber = document.querySelectorAll('.userNumber');
+const previousOperation = document.querySelector('#previousOperation');
 
 const decimal = document.querySelector('#decimal');
 const specialFunction = document.querySelectorAll('.specialFunc');
@@ -57,9 +58,16 @@ window.addEventListener('keydown', (e) => {
     }
 });
 
+function previousOperationDisplay(){
+    let display = getDisplay().replace(/\s/g, '');;
+    displayClear();
+    return display 
+    
+}
+
 
 function getDisplay(){
-    let display = document.querySelectorAll('.calcDisplay');
+    let display = operationDisplay.childNodes;
     let string = '';
     display.forEach(function(index) {
         string += index.textContent;
@@ -69,7 +77,7 @@ function getDisplay(){
     
 }
 
-function showDisplay(string = userInput.textContent){
+function showDisplay(string = userInput.textContent, displayClass = operationDisplay){
     let calcDisplay = document.createElement('p');
     calcDisplay.classList.add('calcDisplay');
     calcDisplay.appendChild(document.createTextNode(string));
@@ -78,7 +86,7 @@ function showDisplay(string = userInput.textContent){
     calcDisplay.style.fontSize = '25px';
     formatSpaces(calcDisplay, string);
 
-    operationDisplay.appendChild(calcDisplay);
+    displayClass.appendChild(calcDisplay);
 
 }
 
@@ -95,7 +103,8 @@ function evaluateDisplay(){
     let result = eval(display);
     isDecimalPressed = false;
 
-    displayClear();
+    let previousDisplay = previousOperationDisplay();
+    showDisplay(previousDisplay + "=" + eval(previousDisplay).toString(), previousOperation);
 
     if(result === Infinity){
         showDisplay('Error - Cannot divide by 0.')
